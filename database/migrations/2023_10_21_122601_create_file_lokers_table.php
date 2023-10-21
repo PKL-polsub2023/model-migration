@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('username');
-            $table->string('password');
-            $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('kontak');
-            $table->string('role');
-            $table->rememberToken();
+        Schema::create('file_lokers', function (Blueprint $table) {
+            $table->id('id_file_loker');
+            $table->string('file')->nullable();
+            $table->bigInteger('id_user')->nullable();
+            $table->bigInteger('id_loker')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('file_lokers');
     }
 };
